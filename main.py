@@ -3,14 +3,13 @@ import tkinter
 # By Team Blue
 
 
-def main():
-    print("test")
+def Database():
     Done = False
     Input = False
     Read = True
     student_info = []
     mainwindow=tkinter.Tk()
-    MainFrame=tkinter.Frame(mainwindow)
+    MainFrame=tkinter.Frame(mainwindow, height=30, width=30)
     info = tkinter.StringVar()
     x = 1
 # Create connection
@@ -23,7 +22,7 @@ def main():
                 last_name TEXT NOT NULL, course_one TEXT NOT NULL, course_two TEXT NOT NULL, hobby_one TEXT NOT NULL,
                 hobby_two TEXT NOT NULL)''')
     curs.execute('''SELECT * From StudentDatabase''')
-    List = curs.fetchone()
+    List = str(curs.fetchone())
     while Done == False:
         if Input == True:
             Input = False
@@ -31,12 +30,16 @@ def main():
         if Read == True:
             label = tkinter.Label(MainFrame, textvariable=info)
             while List != "None":
-                List += curs.fetchone()
+                List += str(curs.fetchone())
             label.pack()
-            MainFrame.pack()
-            info = List
+            info.set(List)
             Read = False
-    curs.executemany('INSERT OR REPLACE INTO Something VALUES (?, ?, ?, ?, ?, ?, ?)', student_info)
+        Done=True
+    MainFrame.pack()
+    print("test")
     tkinter.mainloop()
     conn.commit()
     conn.close()
+
+if __name__ == '__main__':
+    Database()
