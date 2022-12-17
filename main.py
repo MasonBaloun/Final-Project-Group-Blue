@@ -9,23 +9,13 @@ conn = sqlite3.connect('StudentDatabase.db')
 curs = conn.cursor()
 
 def Database():
-    Done = False
-    Input = False
     curs.execute('''CREATE TABLE IF NOT EXISTS StudentDatabase(student_id INTEGER PRIMARY KEY NOT NULL,first_name TEXT NOT NULL,
                 last_name TEXT NOT NULL, course_one TEXT NOT NULL, course_two TEXT NOT NULL, hobby_one TEXT NOT NULL,
                 hobby_two TEXT NOT NULL)''')
     curs.execute('''SELECT * From StudentDatabase''')
     Info = tkinter.Label(TopFrame, text="Student Database. Please select Input to input more data, \nor Read to read existing data")
-    InputButton = tkinter.Button(TopFrame, text="Input")
+    InputButton = tkinter.Button(TopFrame, text="Input", command=Insert)
     ReadButton = tkinter.Button(TopFrame, text="Read", command=Request)
-    while not Done:
-        print("test")
-        if Input == True:
-            print("test")
-            Input = False
-            conn.commit()
-        Done=True
-
     Info.pack()
     InputButton.pack()
     ReadButton.pack()
@@ -44,6 +34,9 @@ def Request():
         List += str(curs.fetchone())
     OutLabel.pack()
     info.set(List)
+
+def Insert():
+    pass
 
 if __name__ == '__main__':
     Database()
