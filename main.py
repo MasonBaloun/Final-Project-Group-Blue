@@ -12,11 +12,6 @@ def Database():
     Done = False
     Input = False
     Read = False
-
-# Create connection
-
-# Create a table within the database if it doesn't exist already
-# Using a multiline string simplifies the execute command
     curs.execute('''CREATE TABLE IF NOT EXISTS StudentDatabase(student_id INTEGER PRIMARY KEY NOT NULL,first_name TEXT NOT NULL,
                 last_name TEXT NOT NULL, course_one TEXT NOT NULL, course_two TEXT NOT NULL, hobby_one TEXT NOT NULL,
                 hobby_two TEXT NOT NULL)''')
@@ -50,7 +45,6 @@ def Request():
         List += str(curs.fetchone())
     OutLabel.pack()
     info.set(List)
-    Read = False
 
 if __name__ == '__main__':
     Database()
