@@ -3,14 +3,16 @@ import tkinter
 # By Team Blue
 
 
-class Database:
-    Done=False
-    Input=False
-    Read=False
+def main():
+    print("test")
+    Done = False
+    Input = False
+    Read = True
     student_info = []
     mainwindow=tkinter.Tk()
+    MainFrame=tkinter.Frame(mainwindow)
     info = tkinter.StringVar()
-    x=1
+    x = 1
 # Create connection
     conn = sqlite3.connect('StudentDatabase.db')
 # Setup Cursor
@@ -20,20 +22,21 @@ class Database:
     curs.execute('''CREATE TABLE IF NOT EXISTS StudentDatabase (student_id INTEGER PRIMARY KEY NOT NULL,first_name TEXT NOT NULL,
                 last_name TEXT NOT NULL, course_one TEXT NOT NULL, course_two TEXT NOT NULL, hobby_one TEXT NOT NULL,
                 hobby_two TEXT NOT NULL)''')
+    curs.execute('''SELECT * From StudentDatabase''')
+    List = curs.fetchone()
     while Done == False:
         if Input == True:
             Input = False
+            conn.commit()
         if Read == True:
-            curs.execute('''SELECT * From StudentDatabase''')
-            DatabaseList=curs.fetchall()
-            info.set(DatabaseList[0])
-            tkinter.Label(mainwindow, textvariable=info)
-            while info != "None":
-                info.set(DatabaseList[x])
-                tkinter.Label(mainwindow, textvariable=info)
-                x+=1
+            label = tkinter.Label(MainFrame, textvariable=info)
+            while List != "None":
+                List += curs.fetchone()
+            label.pack()
+            MainFrame.pack()
+            info = List
             Read = False
-# Add values into the database if they don't already exist
     curs.executemany('INSERT OR REPLACE INTO Something VALUES (?, ?, ?, ?, ?, ?, ?)', student_info)
+    tkinter.mainloop()
     conn.commit()
     conn.close()
