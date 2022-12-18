@@ -7,6 +7,7 @@ BottomFrame = tkinter.Frame(mainwindow, height=30, width=30)
 TopFrame = tkinter.Frame(mainwindow, height=30, width=30)
 conn = sqlite3.connect('StudentDatabase.db')
 curs = conn.cursor()
+info = tkinter.StringVar()
 
 
 def Database():
@@ -27,7 +28,6 @@ def Database():
     conn.close()
 
 def Request():
-    info = tkinter.StringVar()
     List = str(curs.fetchone())
     OutLabel = tkinter.Label(BottomFrame, textvariable=info)
     while List != "None":
@@ -38,6 +38,15 @@ def Request():
 
 
 def Insert():
+    info="Would you like update existing data or create a new student?"
+    ChangeButton = tkinter.Button(BottomFrame, text="Change", command=UpdateData)
+    NewStudentButton = tkinter.Button(BottomFrame, text="New Student", command=NewStudent)
+
+
+def UpdateData():
+    pass
+
+def NewStudent():
     pass
 
 
