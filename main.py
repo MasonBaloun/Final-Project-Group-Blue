@@ -38,11 +38,13 @@ def Request():
 
 
 def Insert():
-    info.set("Would you like to update existing data or create a new student?")
+    info.set("Would you like to update existing data, delete an existing student, or create a new student?")
     OutLabel.pack()
     UpdateDataButton = tkinter.Button(BottomFrame, text="Update Data", command=UpdateData)
     NewStudentButton = tkinter.Button(BottomFrame, text="Create New Student", command=NewStudent)
-    UpdateDataButton.pack()
+    DeleteStudentButton = tkinter.Button(BottomFrame, text="Delete Student", command=DeleteStudent)
+    UpdateDataButton.pack(side="right")
+    DeleteStudentButton.pack(side="left")
     NewStudentButton.pack()
 
 
@@ -50,6 +52,10 @@ def UpdateData():
     pass
 
 def NewStudent():
+    pass
+
+
+def DeleteStudent():
     pass
 
 if __name__ == '__main__':
