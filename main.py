@@ -21,7 +21,7 @@ def Database():
     InputButton.pack()
     ReadButton.pack()
     TopFrame.pack()
-    BotomFrame.pack()
+    BottomFrame.pack()
     tkinter.mainloop()
     conn.commit()
     conn.close()
