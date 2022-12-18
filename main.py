@@ -21,9 +21,9 @@ def Database(): #Creates database and containes first steps of the GUI interface
     curs.execute('''INSERT INTO TABLE StudentDatabase("00000001", "William", "Brando", "16", 
         "MN", "Gaming", "Building Models")''')
     curs.execute('''INSERT INTO TABLE StudentDatabase("00000002", "Christian", "Berry", "########", 
-        "Python Programming", "########", "#######")''')
+        "########", "########", "#######")''')
     curs.execute('''INSERT INTO TABLE StudentDatabase("00000003", "Mason", "Baloun", "########", 
-        "Python Programming", "########", "##########")''')
+        "#########", "########", "##########")''')
     curs.execute('''INSERT INTO TABLE StudentDatabase("00000004", "David", "Conway", "17", 
         "MN", "Art", "Creating Graphic Novels")''')
     curs.execute('''INSERT INTO TABLE StudentDatabase("00000005", "Jacob", "Howler", "16", 
