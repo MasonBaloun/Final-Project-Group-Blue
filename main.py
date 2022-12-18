@@ -3,10 +3,11 @@ import tkinter
 # By Team Blue
 
 mainwindow = tkinter.Tk()
-BotomFrame = tkinter.Frame(mainwindow, height=30, width=30)
+BottomFrame = tkinter.Frame(mainwindow, height=30, width=30)
 TopFrame = tkinter.Frame(mainwindow, height=30, width=30)
 conn = sqlite3.connect('StudentDatabase.db')
 curs = conn.cursor()
+
 
 def Database():
     curs.execute('''CREATE TABLE IF NOT EXISTS StudentDatabase(student_id INTEGER PRIMARY KEY NOT NULL,first_name TEXT NOT NULL,
@@ -28,15 +29,17 @@ def Database():
 def Request():
     info = tkinter.StringVar()
     List = str(curs.fetchone())
-    OutLabel = tkinter.Label(BotomFrame, textvariable=info)
+    OutLabel = tkinter.Label(BottomFrame, textvariable=info)
     while List != "None":
         List += "\n"
         List += str(curs.fetchone())
     OutLabel.pack()
     info.set(List)
 
+
 def Insert():
     pass
+
 
 if __name__ == '__main__':
     Database()
