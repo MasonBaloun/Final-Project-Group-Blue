@@ -22,8 +22,8 @@ def Database(): #Creates database and containes first steps of the GUI interface
         "MN", "Gaming", "Building Models")''')
     curs.execute('''INSERT INTO TABLE StudentDatabase("00000002", "Christian", "Berry", "########", 
         "########", "########", "#######")''')
-    curs.execute('''INSERT INTO TABLE StudentDatabase("00000003", "Mason", "Baloun", "########", 
-        "#########", "########", "##########")''')
+    curs.execute('''INSERT INTO TABLE StudentDatabase("00000003", "Mason", "Baloun", "18", 
+        "MN", "Piano", "Roller Skating")''')
     curs.execute('''INSERT INTO TABLE StudentDatabase("00000004", "David", "Conway", "17", 
         "MN", "Art", "Creating Graphic Novels")''')
     curs.execute('''INSERT INTO TABLE StudentDatabase("00000005", "Jacob", "Howler", "16", 
